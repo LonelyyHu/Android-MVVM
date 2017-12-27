@@ -14,13 +14,13 @@ class TasksViewModel() : ViewModel() {
     companion object {
 
         @JvmField
-        var obStrNoTasksMessage = ObservableField<String>()
+        var obStrNoTasksMessage = ObservableField<String>("No Task.....")
 
         @JvmField
         var obBoolTasksListEmpty = ObservableBoolean(true)
 
         @JvmField
-        var obStrFilteringLabel = ObservableField<String>()
+        var obStrFilteringLabel = ObservableField<String>("Filter Name")
 
         @JvmField
         var obListTasks = ObservableArrayList<Task>()

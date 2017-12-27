@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.lonelyyhu.exercise.android_mvvm.R
 import com.lonelyyhu.exercise.android_mvvm.component.ScrollChildSwipeRefreshLayout
+import com.lonelyyhu.exercise.android_mvvm.util.ActivityUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -31,6 +32,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        setupViewFragment()
+
+    }
+
+    private fun setupViewFragment() {
+
+        val taskFrag = supportFragmentManager.findFragmentById(R.id.contentFrame) as TasksFragment? ?: TasksFragment.newInstance()
+
+        taskFrag.taskViewModel = TasksViewModel()
+        ActivityUtils.replaceFragment(supportFragmentManager, taskFrag, R.id.contentFrame)
 
     }
 
