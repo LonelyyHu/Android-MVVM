@@ -28,7 +28,7 @@
                 android:id="@+id/tasks_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="@{viewmodel.obBoolTasksListEmpty? View.GONE : View.VISIBLE}">
+                android:visibility="@{viewmodel.obListTasks.size == 0? View.GONE : View.VISIBLE}">
 
                 <TextView
                     android:id="@+id/tv_filter_label"
@@ -38,12 +38,14 @@
                     android:text="@{viewmodel.obStrFilteringLabel}"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="AAAA"/>
 
                 <ListView
                     android:id="@+id/lv_tasks_list"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    app:items="@{viewmodel.obListTasks}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +56,7 @@
                 android:id="@+id/tasks_empty_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="@{viewmodel.obBoolTasksListEmpty? View.VISIBLE : View.GONE}">
+                android:visibility="@{viewmodel.obListTasks.size == 0? View.VISIBLE : View.GONE}">
 
                 <ImageView
                     android:id="@+id/imageView2"

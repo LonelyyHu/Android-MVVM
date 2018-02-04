@@ -1,8 +1,8 @@
 package com.lonelyyhu.exercise.android_mvvm.bindingAdapter
 
 import android.databinding.BindingAdapter
-import android.widget.ListAdapter
 import android.widget.ListView
+import com.lonelyyhu.exercise.android_mvvm.adapter.TasksAdapter
 import com.lonelyyhu.exercise.android_mvvm.data.Task
 
 /**
@@ -16,9 +16,9 @@ class ListViewBindings {
         @JvmStatic
         @BindingAdapter("app:items")
         fun setItems(listView: ListView, items: List<Task>) {
-            var adapter: ListAdapter? = listView.adapter
+            val adapter = listView.adapter as TasksAdapter
 
-//            adapter.swap
+            adapter.swap(items)
 
         }
 
