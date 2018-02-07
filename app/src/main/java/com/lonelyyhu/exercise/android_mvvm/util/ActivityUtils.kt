@@ -11,10 +11,17 @@ class ActivityUtils {
     companion object {
 
         @JvmStatic
-        fun replaceFragment(fragmentManager: FragmentManager?, fragment: Fragment?, containerId: Int){
+        fun replaceFragment(fragmentManager: FragmentManager, fragment: Fragment, containerId: Int, tag: String?){
 
-            val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(containerId, fragment)
+            val transaction = fragmentManager.beginTransaction()
+
+            if (tag != null) {
+                transaction.replace(containerId, fragment, tag)
+                transaction.addToBackStack(tag)
+            } else {
+                transaction?.replace(containerId, fragment)
+            }
+
             transaction?.commit()
 
         }

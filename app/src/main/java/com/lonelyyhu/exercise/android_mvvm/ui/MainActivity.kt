@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //            tasksViewModel.loadTasks()
 
             val detailFragment = TaskDetailFragment.newInstance(null)
-            ActivityUtils.replaceFragment(supportFragmentManager, detailFragment, R.id.contentFrame)
+
+            ActivityUtils.replaceFragment(supportFragmentManager, detailFragment, R.id.contentFrame, TaskDetailFragment::class.java.name)
         }
 
         val toggle = ActionBarDrawerToggle(
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         tasksViewModel = ViewModelProviders.of(this).get(TasksViewModel::class.java)
         taskFrag.taskViewModel = tasksViewModel
-        ActivityUtils.replaceFragment(supportFragmentManager, taskFrag, R.id.contentFrame)
+        ActivityUtils.replaceFragment(supportFragmentManager, taskFrag, R.id.contentFrame, null)
 
     }
 
